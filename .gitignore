@@ -1,3 +1,37 @@
+## TUTO: https://www.atlassian.com/br/git/tutorials/saving-changes/gitignore
+### ATENCAO: PARA MANTER (FILE ou DIR) USE NA FRENTE: !
+### OBS:   No final do arquivo a ação do ! é a que prevalece.
+### AVISO: No final tem um !*.md
+
+## GERANERALIZANDO (se quiser usar renomeio para este padrao): 
+## IGNORAR PASTAS (EM QUALQUER LUGAR): qualquerNomePasta.nogit/
+**/*.nogit/
+**/*.NOGIT/
+**/*.nogitd/
+**/*.NOGITD/
+## IGNORAR ARQUIVOS DA PASTA (EM QUALQUER LUGAR): qualquerNomePasta.nogitf/
+**/*.nogitf/*
+**/*.NOGITF/*
+*.nogit.*
+*.NOGIT.*
+*OFF.*
+*off.*
+*copy*
+*COPY*
+.env.*
+
+## MINHAS PASTAS/ARQUIVOS IGNORADAS(OS)
+.jjrdev/config/auto/
+#.download/
+#download/
+# storage/value/register*/telegram/*
+# storage/value/register*/visitors/*
+storage/value/register*/*/*
+
+
+### NODEJS ###
+node_modules/
+
 # Logs
 logs
 *.log
