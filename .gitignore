@@ -32,6 +32,7 @@ storage/value/register*/*/*
 ### NODEJS ###
 node_modules/
 
+##### AUTO GITHUB:
 # Logs
 logs
 *.log

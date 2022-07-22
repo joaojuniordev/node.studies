@@ -1,0 +1,35 @@
+{
+  "name": "node.studies",
+  "version": "1.0.0",
+  "description": "Projeto voltado para estudos contínuos sobre Node.js e suas libs",
+  "main": ".env.jjrdev.cloudflare.js",
+  "scripts": {
+    "jjrdev": "nodemon ./public/index.js",
+    "start": "node ./public/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/joaojuniordev/node.studies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaojuniordev/node.studies/issues"
+  },
+  "homepage": "https://github.com/joaojuniordev/node.studies#readme",
+  "dependencies": {
+    "mqtt":"4.3.7",
+    "telegraf":"4.8.5",
+    "axios": "^0.26.1",
+    "body-parser": "1.18.2",
+    "cors": "^2.8.5",
+    "express": "4.16.2"
+  },
+  "devDependencies": {
+    "geoip-lite": "^1.4.2",
+    "nodemon": "^2.0.15",
+    "request-ip": "2.1.3"
+  }
+}
