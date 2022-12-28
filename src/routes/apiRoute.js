@@ -4,11 +4,11 @@ module.exports = (app) => {
     } = app
 
     //  ROUTES:
-    app.route('/api')
+    app.route('/api/test')
         .get(apiController.get)
         .post(apiController.save)
         
-    app.route('/api/:id')
+    app.route('/api/test/:id')
         .get(apiController.getById)
         .put(apiController.update)
         .delete(apiController.remove)
