@@ -1,13 +1,17 @@
-const hourSHD  = require('./hour.shd')
+const hourJOB        = require('./hour.job')
+const ipJOB          = require('./ip.job')
+const cloudflareJOBS = require('./cloudflare')
 
 
 module.exports = (app) => {
-    // console.log('   UTILS::schedules::index ... ', )
+    console.log('   JOBS:: ... ' )
 
     // ADD YOUR SCHEDULES: []
     return [
         
-        hourSHD(app)
-        
+        hourJOB(app),
+        ipJOB(app),
+        ...cloudflareJOBS(app),
+
     ]
 }
