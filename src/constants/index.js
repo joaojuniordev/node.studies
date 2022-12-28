@@ -67,7 +67,12 @@ module.exports = {
         PARAMS: process.env.JJRDEV_POSTGRES_PARAMS,
     },
 
+    EXTERNAL:{
+        URL_GETIP: process.env.JJRDEV_URL_GETIP,
+    },
+
     CLOUDFLARE: {
+        URL_API: process.env.JJRDEV_CLOUDFLARE_URL_API,
         AUTH_EMAIL: process.env.JJRDEV_CLOUDFLARE_AUTH_EMAIL,
         AUTH_METHOD: process.env.JJRDEV_CLOUDFLARE_AUTH_METHOD,
         AUTH_HEADER: process.env.JJRDEV_CLOUDFLARE_AUTH_HEADER,
