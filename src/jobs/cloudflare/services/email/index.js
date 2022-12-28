@@ -1,3 +1,10 @@
 module.exports = (app)=>{
-    return ()=>console.log('   CloudflareJob::email ... under constructor')
+    const { } = app
+
+    const cfUpdateEmailJob = async()=>{
+        console.log('   CloudflareJob::email ... under constructor')
+        return { error:false, message:"Serviço em desenvolvimento..." }
+    }
+
+    return cfUpdateEmailJob
 }

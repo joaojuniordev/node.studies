@@ -7,7 +7,7 @@ const updateRecors = require('./updateRecord')
 module.exports = (app)=>{
     console.log('Cloudflare::dns ... ',)
 
-    const updateDNS = async ()=>{
+    const cfUpdateDNSJob = async ()=>{
         console.log('Cloudflare::updateDNS ... ',)
         
         // GET IP: 
@@ -37,5 +37,5 @@ module.exports = (app)=>{
         return { error:false, message:"Em construção...", data:[] }
     }
 
-    return updateDNS
+    return cfUpdateDNSJob
 }
