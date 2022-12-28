@@ -1,4 +1,4 @@
-// const {}  = require('./')
+const errors  = require('./errors.mw')
 
 
 module.exports = (app) => {
@@ -8,7 +8,7 @@ module.exports = (app) => {
     // ADD YOUR MWS:
     return [
 
-        // ...
+        ...errors(app),
         
     ]
 }

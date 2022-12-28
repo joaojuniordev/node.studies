@@ -16,6 +16,6 @@ module.exports = (app)=>{
     const mws = middlewares(app)    
     app.use(mws)
     
-    // console.log('middlewares::index:: mws =', mws)
+    console.log('middlewares::index:: mws =', mws)
     return true
 }
