@@ -26,8 +26,8 @@ module.exports = (app) =>{
     
     //CONEXAO COM O MONGODB:
     mongoose.connect(`${URI}`, OPTIONS)
-        .then(resp=>{ console.log('MongoDB', true,  `UP!-> ${URI}  `) })
-        .catch(err=>{ console.log('MongoDB', false, `Erro!-> ${err}`) })
+        .then((_)=>{ console.log('MongoDB', true,  `UP!-> ${URI}  `) })
+        .catch((err)=>{ console.log('MongoDB', false, `Erro!-> ${err}`) })
     
     app.dbmg = mongoose
 

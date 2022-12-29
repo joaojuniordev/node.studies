@@ -50,7 +50,7 @@ module.exports = (app) => {
             .catch(err  =>({ error:true, status:500, message:"Erro, API.", data:null }))
     }
 
-    const upload = async (files, info, headers)=>{
+    const upload = async (files={}, info, headers)=>{
         console.log('ApiService::upload ...', files, info)
 
         //SALVAR ARQUIVO FISICAMENTE:

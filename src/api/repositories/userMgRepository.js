@@ -39,7 +39,7 @@ module.exports = (app) => {
 
     /**
      * 
-     * @param {*} newSalon 
+     * @param {*} user 
      * @returns 
      */
     const save = async (user) => {
@@ -47,7 +47,7 @@ module.exports = (app) => {
             const respUser = await userModel(user).save()
             return { error: false, user:respUser }
         } catch (error) {
-            return { error: true, message: error.message }
+            return { error: true, user:null, message: error.message }
         }
     }
 
@@ -62,7 +62,7 @@ module.exports = (app) => {
             const upUser = await userModel.findByIdAndUpdate(id, user)
             return { error:false, user:upUser }
         } catch (error) {
-            return { error:true, message:error?.message, user:null }
+            return { error:true, user:null, message:error?.message }
         }
     }
 
@@ -93,7 +93,7 @@ module.exports = (app) => {
             const delUser = await userModel.findByIdAndRemove({ _id: id }).select(fields)
             return { error: false, user:delUser }
         } catch (error) {
-            return { error: true, message: error.message, user: null }
+            return { error: true,  user: null, message:error?.message, }
         }
     }
 
