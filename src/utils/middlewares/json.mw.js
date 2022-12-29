@@ -12,7 +12,7 @@ module.exports = (app)=>{
     const jsonParseFormDataMW = (req, res, next) =>{
         const { 'content-type':contentType } = req.headers
         const { body={} } = req
-        const multiPart = [ contentType.includes('multipart'), contentType.includes('form-data')]
+        const multiPart = [ contentType?.includes('multipart'), contentType?.includes('form-data')]
 
         // MULTIPART/FORM-DATA:
         if( multiPart.includes(true) ){

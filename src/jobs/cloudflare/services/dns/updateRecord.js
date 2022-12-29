@@ -40,7 +40,7 @@ const formartData = (record, ip, options)=>{
         name:record_name,
         type:record_type,
         ttl: record_ttl,
-        proxy:record_proxy=false, 
+        proxy:record_proxy=true, 
         content: currentIp
     } = record
     // console.log('   formarterData ### ', [ record_name, record_identifier, currentIp, record_type, record_ttl, record_proxy ])
