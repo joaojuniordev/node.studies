@@ -2,32 +2,34 @@ module.exports = (app) => {
     const {
         api: {
             services:{ apiService },
-            repositories: { userRepository } 
+            repositories: { userMgRepository } 
         }
     } = app
 
 
     //  SERVICES:
     const get = async (page, query, columns=['-passwd','-__v'])=>{
-        console.log('UserService::get ...', page, query, columns )
+        console.log('UserMgService::get ...', page, query, columns )
 
-        return userRepository.find(query, columns)
+        return userMgRepository.find(query, columns)
             .then(({users})=>({ error:false, status:200, message:"Lista de usuários.", data:users }))
             .catch(({users})=>({ error:true, status:500, message:"Erro na lista de usuários.", data:users }))
     }
 
     const getById = async (id, columns=['-passwd','-__v'])=>{
-        console.log('UserService::getById ...', id, columns )
+        console.log('UserMgService::getById ...', id, columns )
 
-        return userRepository.findById(id, columns)
+        return userMgRepository.findById(id, columns)
             .then(({user})=>({ error:false, status:200, message:"Usuário encontrado.", data:user }))
             .catch(({user})=>({ error:true, status:500, message:"Usuário não existe.", data:user }))
     }
 
     const save = async (user, files, headers)=>{
-        console.log('UserService::save ...', user, files)
-
-        const { user:svUser } = await userRepository.save(user)
+        console.log('UserMgService::save ...', user, files)
+        if( user.passwd!==user.confirmPasswd ){ return { error:true, status:500, message:"Senhas diferentes." }}
+        delete user.confirmPasswd
+        
+        const { user:svUser } = await userMgRepository.save(user)
         if( !svUser ){ return { error:true, status:500, message:"Erro ao salvar o usuário." }}
         
         //SALVAR ARQUIVO FISICAMENTE:
@@ -38,9 +40,9 @@ module.exports = (app) => {
     }
 
     const update = async (id, user)=>{
-        console.log('UserService::update ...', id, user )
+        console.log('UserMgService::update ...', id, user )
 
-        return userRepository.findByIdAndUpdate(id, user)
+        return userMgRepository.findByIdAndUpdate(id, user)
             .then(({user:upUser})=>{
                 if(upUser===null){ return { error:true, status:400, message:"Usuário não existe." } }
                 return { error:false, status:200, message:"Usuário aualizado com sucesso." }
@@ -49,11 +51,14 @@ module.exports = (app) => {
     }
 
     const remove = async (id)=>{
-        console.log('UserService::remove ...', id)
+        console.log('UserMgService::remove ...', id)
 
-        return userRepository.remove(id)
-            .then(()=>({ error:false, status:200, message:"Usuário excluído com sucesso." }))
-            .catch(()=>({ error:true, status:500, message:"Erro ao exluir usuário." }))
+        return userMgRepository.remove(id)
+            .then(({user})=>{
+                if( !user ){ return { error:true, status:400, message:"Usuário não existe." } }
+                return { error:false, status:200, message:"Usuário excluído com sucesso." }
+            })
+            .catch(({})=>({ error:true, status:500, message:"Erro ao exluir usuário." }))
     }
 
 

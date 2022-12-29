@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const {
-        api: { services: { userService } }
+        api: { services: { userMgService } }
     } = app
 
     //  CTRLLS:
@@ -9,7 +9,7 @@ module.exports = (app) => {
         const { pag=1, colunas, ...query } = req.query
         const columns = colunas?.split('+')
 
-        userService.get(pag, query, columns)
+        userMgService.get(pag, query, columns)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
@@ -19,7 +19,7 @@ module.exports = (app) => {
         const { id }  = req.params
         const columns = req.query.colunas?.split('+')
 
-        userService.getById(id, columns)
+        userMgService.getById(id, columns)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
@@ -29,7 +29,7 @@ module.exports = (app) => {
         const user = req.body?.user ? req.body?.user : req.body
         const { files, headers } = req
 
-        userService.save(user, files, headers)
+        userMgService.save(user, files, headers)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
@@ -39,7 +39,7 @@ module.exports = (app) => {
         const { id } = req.params
         const user    = req.body
 
-        userService.update(id, user)
+        userMgService.update(id, user)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
@@ -48,7 +48,7 @@ module.exports = (app) => {
         console.log('UserCTRLL::remvoe ... ')
         const { id }  = req.params
 
-        userService.remove(id)
+        userMgService.remove(id)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }
