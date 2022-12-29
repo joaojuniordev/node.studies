@@ -25,10 +25,11 @@ module.exports = (app) => {
     }  
 
     const save = async(req, res)=>{
-        console.log('UserCTRLL::save ... ')
-        const user  = req.body
+        console.log('UserCTRLL::save ... Multiform',)
+        const user = req.body?.user ? req.body?.user : req.body
+        const { files, headers } = req
 
-        userService.save(user)
+        userService.save(user, files, headers)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  

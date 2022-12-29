@@ -11,8 +11,8 @@ module.exports = {
     APP: {
         NAME: process.env.JJRDEV_APP_NAME,
         SECRET: process.env.JJRDEV_APP_SECRET,
-        UPLOAD_DIR: (process.env.JJRDEV_APP_UPLOAD_DIR) ? process.env.JJRDEV_UPLOAD_DIR : "./storage/upload",
-        UPLOAD_ENABLED: (process.env.JJRDEV_APP_UPLOAD_ENABLED === "true") ? true : false,//CAST Bool
+        UPLOAD_DIR: (process.env.JJRDEV_APP_UPLOAD_DIR) ? process.env.JJRDEV_APP_UPLOAD_DIR : "./storage/upload",
+        AUTO_SAVEFILE: (process.env.JJRDEV_APP_AUTO_SAVEFILE === "true") ? true : false,//CAST Bool
         SCHEDULED: process.env.JJRDEV_APP_SCHEDULED,
     },
 

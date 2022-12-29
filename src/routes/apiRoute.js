@@ -12,6 +12,8 @@ module.exports = (app) => {
         .get(apiController.getById)
         .put(apiController.update)
         .delete(apiController.remove)
-        
+    
+    app.route('/api/upload')
+        .post(apiController.upload)    
 
 }

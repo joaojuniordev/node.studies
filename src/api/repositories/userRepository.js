@@ -14,7 +14,6 @@ module.exports = (app) => {
      * @returns 
      */
     const find = async (query={}, fields=[]) => {
-        console.log('UserRepo::find ...', query, fields )
         try {
             const users = await userModel.find(query).select(fields)
             return { error: false, users }
@@ -44,7 +43,6 @@ module.exports = (app) => {
      * @returns 
      */
     const save = async (user) => {
-        console.log('UserRepo::save ...', user)
         try {
             const respUser = await userModel(user).save()
             return { error: false, user:respUser }

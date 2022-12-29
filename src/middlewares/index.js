@@ -9,13 +9,14 @@ const authorial  = require('../utils/middlewares')
 // IMPORTS MW LIBS:
 const bodyParser = require('body-parser')
 const cors       = require('cors')
-
+const connectBusboy     = require('connect-busboy')
+const busboyBodyParser  = require('busboy-body-parser')
 
 
 /**
  * @param {*} app 
 */
-module.exports = (app)=>{    
+module.exports = (app)=>{
     const authorialMW = authorial(app)
 
     // ADD MW FROM LIBS:
@@ -28,6 +29,8 @@ module.exports = (app)=>{
         bodyParser.json(),
         // bodyParser.json({ type: 'application/json'}),
         cors(),
+        connectBusboy(),
+        busboyBodyParser(),
 
     ]
 

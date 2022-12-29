@@ -1,4 +1,6 @@
-const errors  = require('./errors.mw')
+const error  = require('./error.mw')
+const file   = require('./file.mw')
+const json   = require('./json.mw')
 
 
 module.exports = (app) => {
@@ -8,7 +10,9 @@ module.exports = (app) => {
     // ADD YOUR MWS:
     return [
 
-        ...errors(app),
+        ...error(app),
+        ...file(app),
+        ...json(app),
         
     ]
 }

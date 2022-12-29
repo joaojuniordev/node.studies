@@ -1,6 +1,9 @@
 module.exports = (app) => {
     const {
-        api: { repositories: { userRepository } }
+        api: {
+            services:{ apiService },
+            repositories: { userRepository } 
+        }
     } = app
 
 
@@ -21,12 +24,17 @@ module.exports = (app) => {
             .catch(({user})=>({ error:true, status:500, message:"Usuário não existe.", data:user }))
     }
 
-    const save = async (user)=>{
-        console.log('UserService::save ...', user)
+    const save = async (user, files, headers)=>{
+        console.log('UserService::save ...', user, files)
 
-        return userRepository.save(user)
-            .then(({user})=>({ error:false, status:200, message:"Usuário salvo com sucesso.", data:user }))
-            .catch(()=>({ error:true, status:500, message:"Erro ao salvar o usuário.", data:null }))
+        const { user:svUser } = await userRepository.save(user)
+        if( !svUser ){ return { error:true, status:500, message:"Erro ao salvar o usuário." }}
+        
+        //SALVAR ARQUIVO FISICAMENTE:
+        const fileErros = await apiService.upload(files, {}, headers)
+        if( fileErros.error ){ return { error:true, message:"Error ao salvar arquivo(s) do usuário." } }
+        
+        return { error:false, status:200, message:"Usuário salvo com sucesso."}
     }
 
     const update = async (id, user)=>{
