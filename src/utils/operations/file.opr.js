@@ -36,18 +36,19 @@ const createMetadata = (file={})=>{
 
 /**
  * @Info Salvar arquivo.
- * @param {*} file FILE
  * @param {*} pathFile /pasta/arquivo.ext
+ * @param {*} file FILE
  * @returns Promise
  */
-const saveFile = ({data, name, encoding, mimetype, truncated, size}, pathFile='./') =>{
+const saveFile = (pathFile='./', {data, name, encoding, mimetype, truncated, size}) =>{
     console.log(`   saveFileOpr:: ... `, pathFile, name)
+    const PATH = path.join(pathFile, name)
 
     return new Promise((resolve, reject)=>{
-        fs.writeFile(path.join(pathFile,name), data, (err) => {
+        fs.writeFile(PATH, data, (err) => {
             if(err){ reject({ error:true, message:err }) }
             resolve({error:false, message:'Arquivo salvo!' })
-            // console.log(`   SAVE:`, true, `${pathFile}/${name}`)
+            // console.log(`   SAVE:`, true, `${PATH}`)
         })
     })
 }

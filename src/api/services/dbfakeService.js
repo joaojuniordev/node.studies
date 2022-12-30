@@ -29,7 +29,7 @@ module.exports = (app) => {
     }
 
     const save = async (collection, field)=>{
-        console.log('DBfakeService::save ...', collection, field)
+        console.log('DBfakeService::save ...', collection, )
 
         return dbfakeRepository.save(collection, field)
             .then(()=>({ error:false, status:200, message:"Salvo com sucesso." }))

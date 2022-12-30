@@ -38,8 +38,8 @@ module.exports = {
 
     DBFAKE:{
         ACTIVATED_JSON: (process.env.JJRDEV_DBFAKE_ACTIVATED_JSON==="true") ?  true : false,
-        NAME: process.env.JJRDEV_DBFAKE_DBNAME || "db.json",
-        PATH: process.env.JJRDEV_DBFAKE_PATH   || "./storage"    
+        NAME: process.env.JJRDEV_DBFAKE_NAME || "db.json",
+        PATH: "./storage/source"
     },
 
     KNEX: {

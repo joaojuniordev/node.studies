@@ -15,7 +15,7 @@ module.exports = (app)=>{
 
             // SAVE FILES:       
             for await (const file of Object.values(files)) { 
-                saveFile(file, UPLOAD_DIR)
+                saveFile(UPLOAD_DIR, file)
                     .then(f=>console.log('  FileMW::SaveFileMW: SAVE_FILE =', f))
                     .catch(e=>console.log(' FileMW::SaveFileMW: ERROR_FILE =', e))
             }

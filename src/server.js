@@ -6,7 +6,8 @@ const consign = require('consign')
 
 // APPLOADER:
 consign({ cwd: __dirname })
-    .include('./config/constants.js')
+    .include('./loaders/constants.js')
+    .include('./loaders')
     .then('./config')
     .then('./api/models')
     .then('./api/repositories')

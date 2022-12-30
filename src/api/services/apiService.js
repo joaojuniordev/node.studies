@@ -56,7 +56,7 @@ module.exports = (app) => {
         //SALVAR ARQUIVO FISICAMENTE:
         const fileErros = []
         for await (const file of Object.values(files)) {
-            const error = saveFile(file, UPLOAD_DIR).then(r=>r.error).catch(e=>e.error) 
+            const error = saveFile(UPLOAD_DIR, file).then(r=>r.error).catch(e=>e.error) 
             fileErros.push(error)    
         }
         if( fileErros.includes(true) ){ return { error:true, message:"Error no upload do(s) arquivo(s)." } }

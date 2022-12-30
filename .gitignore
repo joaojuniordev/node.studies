@@ -22,6 +22,7 @@
 
 ## MINHAS PASTAS/ARQUIVOS IGNORADAS(OS)
 .jjrdev/config/auto/
+/storage/source/*.json
 #.download/
 #download/
 # storage/value/register*/telegram/*
