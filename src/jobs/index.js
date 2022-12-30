@@ -4,7 +4,7 @@ const cloudflareJOBS = require('./cloudflare')
 
 
 module.exports = (app) => {
-    console.log('   JOBS:: ... ' )
+    // console.log('   JOBS:: ... ' )
 
     // ADD YOUR SCHEDULES: []
     return [

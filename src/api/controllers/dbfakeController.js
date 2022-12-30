@@ -1,66 +1,58 @@
 module.exports = (app) => {
     const {
-        api: { services: { ramService } }
+        api: { services: { dbfakeService } }
     } = app
 
     //  CTRLLS:
     const get = async(req, res)=>{
-        console.log('ramCTRLL::get ... ')
+        console.log('DBfakeCTRLL::get ... ')
+        const { collection='' } = req.params
         const { pag=1, colunas, ...query } = req.query
         const columns = colunas?.split('+')
 
-        ramService.get(pag, query, columns)
+        dbfakeService.get(collection, pag, query, columns)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
 
     const getById = async(req, res)=>{
-        console.log('ramCTRLL::getById ... ')
-        const { id }  = req.params
+        console.log('DBfakeCTRLL::getById ... ')
+        const { collection ,id }  = req.params
         const columns = req.query.colunas?.split('+')
 
-        ramService.getById(id, columns)
+        dbfakeService.getById(collection , id, columns)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
 
     const save = async(req, res)=>{
-        console.log('ramCTRLL::save ... ')
+        console.log('DBfakeCTRLL::save ... ')
+        const { collection='' } = req.params
         const document  = req.body
 
-        ramService.save(document)
+        dbfakeService.save(collection, document)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
 
     const update = async(req, res)=>{
-        console.log('ramCTRLL::update ... ')
-        const { id } = req.params
+        console.log('DBfakeCTRLL::update ... ')
+        const { collection, id } = req.params
         const document    = req.body
 
-        ramService.update(id, document)
+        dbfakeService.update(collection, id, document)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
 
     const remove = async(req, res)=>{
-        console.log('ramCTRLL::remove ... ')
-        const { id }  = req.params
+        console.log('DBfakeCTRLL::remove ... ')
+        const { collection, id }  = req.params
 
-        ramService.remove(id)
+        dbfakeService.remove(collection, id)
             .then(resp => res.send(resp))
             .catch(err => res.send(err))
     }  
-
-    const upload = async(req, res)=>{
-        console.log('ramCTRLL::upload ... Multiform', req.body)
-        const { info } = req.body
-        const { files, headers } = req
-
-        ramService.upload(files, info, headers)
-            .then(resp => res.send(resp))
-            .catch(err => res.send(err))
-    } 
 
 
 
@@ -70,7 +62,6 @@ module.exports = (app) => {
         save,
         update,
         remove,
-        upload,
     }
 
 }

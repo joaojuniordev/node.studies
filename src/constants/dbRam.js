@@ -1,8 +1,7 @@
 module.exports = {
-    "users":[
+    "user":[
         {
             id:0,
-            
             name:"Usuario Root",
             username:"",
             email:"root@email.com",

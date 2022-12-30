@@ -36,6 +36,12 @@ module.exports = {
         REGISTERIP: (process.env.JJRDEV_MW_REGISTER_IP === "true") ? true : false,
     },
 
+    DBFAKE:{
+        ACTIVATED_JSON: (process.env.JJRDEV_DBFAKE_ACTIVATED_JSON==="true") ?  true : false,
+        NAME: process.env.JJRDEV_DBFAKE_DBNAME || "db.json",
+        PATH: process.env.JJRDEV_DBFAKE_PATH   || "./storage"    
+    },
+
     KNEX: {
         TABLENAME: process.env.JJRDEV_KNEX_TABLENAME,
         DIRECTORY: process.env.JJRDEV_KNEX_DIRECTORY,
