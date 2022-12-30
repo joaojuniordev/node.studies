@@ -1,5 +1,6 @@
 /**
- * @CLIENT_MODEL
+ * @MODEL MongoDB
+ * @USER
 */
 
 // const mongoose = require('mongoose')
@@ -42,7 +43,7 @@ module.exports = (app) => {
     })
 
     // user.index({ geo: '2dsphere' })//2d: Lat e long
+    // console.log('   Models:: app.dbmg.models.user ...')
     
-    console.log('   app.dbmg.models.user ...')
     return app.dbmg.model('user', user)
 }

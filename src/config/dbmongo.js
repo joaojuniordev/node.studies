@@ -31,6 +31,6 @@ module.exports = (app) =>{
     
     app.dbmg = mongoose
 
-    // console.log('CONFIG::app.dbmg ...', Object.keys(app.dbmg), )
+    // console.log('CONFIG::dbmongo ...', Object.keys(app.dbmg), )
     return true
 }

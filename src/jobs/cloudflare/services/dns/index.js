@@ -5,7 +5,7 @@ const updateRecors = require('./updateRecord')
 
 
 module.exports = (app)=>{
-    console.log('Cloudflare::dns ... ',)
+    // console.log('Cloudflare::dns ... ',)
 
     const cfUpdateDNSJob = async ()=>{
         console.log('Cloudflare::updateDNS ... ',)

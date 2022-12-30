@@ -6,8 +6,10 @@
 const configdb = require('../../knexfile')
 const knex = require('knex')(configdb)
 
-const { connection } = configdb
-console.log('Knex', true,  `UP!-> ${connection?.protocolo}://${connection?.host}:${connection?.port}/${connection.database}`)
+const { 
+    connection:{ protocolo, host, port, database }
+} = configdb
+
 
 module.exports = (app) => {
     
@@ -18,6 +20,7 @@ module.exports = (app) => {
     
     app.db = knex
     
-    console.log('CONFIG::dbKnex: app.consts.KNEX.CMD: ...', app.constants?.KNEX.CMD)
+    console.log('CONFIG::dbKnex: KNEX.CMD: ...', app.constants?.KNEX.CMD)
+    console.log('Knex', true,`UP!-> ${protocolo}://${host}:${port}/${database}`)
     return true
 }

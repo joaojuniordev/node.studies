@@ -1,14 +1,24 @@
-module.exports = [
-    {
-        id:0,
-        name:"API Padrão",
-        dateRegiste: new Date().toLocaleString(),
-        deleteAt:null
-    },
-    {
-        id:1,
-        name:"API Node studies",
-        dateRegiste: new Date().toLocaleString(),
-        deleteAt:null
-    }
-]
+module.exports = {
+    "user":[
+        {
+            id:0,
+            name:"Usuario Root",
+            username:"",
+            email:"root@email.com",
+            passwd:"",
+            admin: true,
+            dateRegiste: new Date().toLocaleString(),
+            deletedAt: null,
+        },
+        {
+            id:1,
+            name:"Usuario Node studies",
+            username:"",
+            email:"studies@email.com",
+            passwd:"",
+            admin: true,
+            dateRegiste: new Date().toLocaleString(),
+            deletedAt: null,
+        }
+    ]
+}

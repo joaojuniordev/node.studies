@@ -40,7 +40,7 @@ const createMetadata = (file={})=>{
  * @param {*} pathFile /pasta/arquivo.ext
  * @returns Promise
  */
-const saveFile = ({data, name, encoding, mimetype, truncated, size}, pathFile='default.png') =>{
+const saveFile = ({data, name, encoding, mimetype, truncated, size}, pathFile='./') =>{
     console.log(`   saveFileOpr:: ... `, pathFile, name)
 
     return new Promise((resolve, reject)=>{
