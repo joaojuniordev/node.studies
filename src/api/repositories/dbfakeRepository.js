@@ -23,7 +23,7 @@ module.exports = (app)=>{
         const id = app.dbfake[collention]?.length ? app.dbfake[collention]?.length : 0
         // ADD RAM:
         if( app.dbfake[collention]===undefined ){ app.dbfake[collention] = [] }
-        app.dbfake[collention].push({ id, ...document })
+        app.dbfake[collention].push({ id:+id, ...document })
         // ADD JSON: true
         DBFAKE.ACTIVATED_JSON && await saveFile({ data:JSON.stringify(app.dbfake), name:DBFAKE.NAME }, DBFAKE.PATH)
 
@@ -33,7 +33,7 @@ module.exports = (app)=>{
     const update = async (collention, id, document)=>{
         console.log('JsonRepository::update ', collention, id )
         // UP RAM:
-        app.dbfake[collention][id] = { id, ...document }
+        app.dbfake[collention][id] = { id:+id, ...document }
         // UP JSON: true
         DBFAKE.ACTIVATED_JSON && await saveFile({ data:JSON.stringify(app.dbfake), name:DBFAKE.NAME }, DBFAKE.PATH)
         
