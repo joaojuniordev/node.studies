@@ -1,3 +1,6 @@
+const { hashEncrypt } = require('../../utils/operations/encrypt.opr')
+
+
 module.exports = (app) => {
     const {
         api: {
@@ -27,13 +30,16 @@ module.exports = (app) => {
     const save = async (user, files, headers)=>{
         console.log('UserKxService::save ...', user, files)
 
-        if( user.passwd!==user.confirmPasswd ){ return { error:true, status:500, message:"Senhas diferentes." }}
+        if( user?.passwd !== user?.confirmPasswd ){ return { error:true, status:500, message:"Senhas diferentes." }}
+        // ENCRYPT PASSWD:
+        user.passwd = hashEncrypt(user.passwd)
         delete user.confirmPasswd
+        console.log('UserKxService::save ... HASH', user)
 
         // SAVE DB:
         const svUser = await userKxRepository.save(user)
         // console.log('svUser ...', svUser)
-        if( !svUser?.user ){ return { error:true, status:500, message:"Erro ao salvar o usuário.", ierror:svUser?.message } }
+        if( !svUser?.user ){ return { error:true, status:400, message:"Erro ao salvar o usuário.", ierror:svUser?.message } }
 
         //PUYSICALLY SALVE FILE:
         const fileErros = await apiService.upload(files, {}, headers)
