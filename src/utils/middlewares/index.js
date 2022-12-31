@@ -1,6 +1,7 @@
-const error  = require('./error.mw')
-const file   = require('./file.mw')
-const json   = require('./json.mw')
+const error   = require('./error.mw')
+const file    = require('./file.mw')
+const json    = require('./json.mw')
+const visitor = require('./visitor.mw')
 
 
 module.exports = (app) => {
@@ -13,6 +14,6 @@ module.exports = (app) => {
         ...error(app),
         ...file(app),
         ...json(app),
-        
+        ...visitor(app)
     ]
 }
