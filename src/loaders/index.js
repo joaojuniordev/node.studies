@@ -7,6 +7,7 @@ module.exports = (app)=>{
     
     // MAKE IMPORTANT FOLDERS:
     mkDirIfNoExist('./storage/source').then(console.log).catch(e=>e)
+    mkDirIfNoExist('./storage/value').then(console.log).catch(e=>e)
     mkDirIfNoExist('./storage/value/register').then(console.log).catch(e=>e)
     
 
