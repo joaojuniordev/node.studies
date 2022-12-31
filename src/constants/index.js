@@ -28,6 +28,10 @@ module.exports = {
         PORT: process.env.JJRDEV_EXPRESS_PORT
     },
 
+    SAFEROUTE:{
+        DBFAKE: (process.env.JJRDEV_SAFEROUTE_DBFAKE==="true") ? true : false
+    },
+
     SERVER: {
         URL: process.env.JJRDEV_SERVER_URL || `${LOCALHOST}:${SERVER_PORT}`,
         PORT: SERVER_PORT,

@@ -18,6 +18,10 @@ module.exports = (app) => {
     if(app.constants?.KNEX.CMD.ROLLBACK){ knex.migrate.rollback([configdb]) }
     if(app.constants?.KNEX.CMD.LATEST){ knex.migrate.latest([configdb]) }
     
+    // VERIFICATION:
+    app.db = (app.db) ? app.db : {}
+    
+    // ADD KNEX:
     app.db = knex
     
     console.log('CONFIG::dbKnex: KNEX.CMD: ...', app.constants?.KNEX.CMD)

@@ -1,5 +1,6 @@
 module.exports = (app) => {
     const {
+        encrypt:{ hashEncrypt },
         api: {
             services:{ apiService },
             repositories: { userKxRepository } 
@@ -24,16 +25,19 @@ module.exports = (app) => {
             .catch(() =>({ error:true, status:500, message:"Erro ao buscar usuário.", data:null }))
     }
 
-    const save = async (user, files, headers)=>{
+    const save = async (user={}, files, headers)=>{
         console.log('UserKxService::save ...', user, files)
 
-        if( user.passwd!==user.confirmPasswd ){ return { error:true, status:500, message:"Senhas diferentes." }}
-        delete user.confirmPasswd
+        if( user?.passwd !== user?.confirmPasswd ){ return { error:true, status:500, message:"Senhas diferentes." }}
+        
+        // ENCRYPT PASSWD:
+        delete        user.confirmPasswd
+        user.passwd = hashEncrypt(user.passwd)
 
         // SAVE DB:
         const svUser = await userKxRepository.save(user)
         // console.log('svUser ...', svUser)
-        if( !svUser?.user ){ return { error:true, status:500, message:"Erro ao salvar o usuário.", ierror:svUser?.message } }
+        if( !svUser?.user ){ return { error:true, status:400, message:"Erro ao salvar o usuário." } }
 
         //PUYSICALLY SALVE FILE:
         const fileErros = await apiService.upload(files, {}, headers)
@@ -69,6 +73,7 @@ module.exports = (app) => {
             .catch(()=>({ error:true, status:500, message:"Erro ao exluir usuário." }))
     }
 
+    
 
     return {
         get,
