@@ -23,8 +23,8 @@ module.exports = {
         host:     POSTGRES.HOST    || 'localhost',
         port:     POSTGRES.PORT    || 5432,
         user:     POSTGRES.DB_USER || 'postgres',
-        password: POSTGRES.DB_PASS || '112233-Postgresql',
-        database: POSTGRES.DB_NAME || 'studiesdb',
+        password: POSTGRES.DB_PASS || '123',
+        database: POSTGRES.DB_NAME || 'namedb',
     },
     pool: {
         min: 2,
