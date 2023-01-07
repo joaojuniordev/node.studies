@@ -16,6 +16,7 @@ consign({ cwd: __dirname })
     .then('./api')
     .then('./routes')
     .then('./schedules/index.js')
+    .then('./subscribers/chat/socketio.js')
     .into(app)
 
 const { EXPRESS, SERVER } = app.constants

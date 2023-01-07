@@ -96,6 +96,18 @@ module.exports = {
         SLACK_SITENAME: process.env.JJRDEV_SLACK_SITENAME,
         SLACK_CHANNEL: process.env.JJRDEV_SLACK_CHANNEL,
         SLACK_URI: process.env.JJRDEV_SLACK_URI,
+    },
+
+    SOCKET:{
+        CHAT:{
+            BACK:{
+                URL: process.env.JJRDEV_SOCKET_CHAT_BACK_URL   || `${LOCALHOST}:8080`,
+                PORT: process.env.JJRDEV_SOCKET_CHAT_BACK_PORT || "8080",
+            },
+            FRONT:{
+                URL: process.env.JJRDEV_SOCKET_CHAT_FRONT,
+            }
+        }
     }
 
 }

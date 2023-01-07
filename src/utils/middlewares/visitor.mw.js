@@ -14,9 +14,12 @@ module.exports = (app)=>{
         if(REGISTER_VISITOR){
             const dateTime = new Date().toLocaleString()
             const dayHour  = dateTime.replace(' ','_').split(':')[0].concat('H')
+            
+            const { header:{ xrealIp }, rskt } = extractIp(req)
+            
             // CURRENT VISITOR:
-            const { xrealIp } = extractIp(req).header
-            const visitorIp   = { date:dateTime , ...xrealIp }
+            const ip = xrealIp?.ip ? xrealIp : rskt
+            const visitorIp   = { date:dateTime , ...ip }
 
             // PAST VISTOR:
             let visitors = {}
