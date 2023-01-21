@@ -1,9 +1,9 @@
-const socketio = require('../../utils/websockets/socketio')
 const { lookup } = require('geoip-lite')
 
+const socketio  = require('../../utils/websockets/socketio')
 const visitorMW = require('../../utils/middlewares/visitor.mw')
 
-const messages = [{ skt:'' ,id:'0', name:'Bot', text:"Bem-vindo", date:new Date().toLocaleString() }]
+const messages = [{ skt:'' ,id:'0', name:'ChatBot', text:"Bem-vindo", date:new Date().toLocaleString() }]
 
 
 module.exports = async (app) => {
