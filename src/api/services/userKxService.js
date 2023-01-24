@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const {
-        encrypt:{ hashEncrypt },
+        encryptions:{ hashEncryption },
         api: {
             services:{ apiService },
             repositories: { userKxRepository } 
@@ -32,7 +32,7 @@ module.exports = (app) => {
         
         // ENCRYPT PASSWD:
         delete        user.confirmPasswd
-        user.passwd = hashEncrypt(user.passwd)
+        user.passwd = hashEncryption(user.passwd)
 
         // SAVE DB:
         const svUser = await userKxRepository.save(user)
