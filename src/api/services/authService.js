@@ -1,9 +1,9 @@
 module.exports = (app) =>{
     const {
         constants:{ TOKEN:{ AUTH_SECRET } },
+        encryptions:{ hashCompareSync },
         validations:{  },
         token:{ create:createToken, validate:validate_Token },
-        encrypt:{ compareSync },
         api:{ repositories: { userKxRepository } }
     } = app
 
@@ -21,7 +21,7 @@ module.exports = (app) =>{
             if( !userFound?.email ){ return { error:false, status:400, message:"Usuário não encontrado.", data:{} } }
 
             // CHECK PASSWD:
-            const isMatch = compareSync(user.passwd, userFound.passwd)
+            const isMatch = hashCompareSync(user.passwd, userFound.passwd)
             if( !isMatch ){ return { error:false, status:400, message:"Senha inválida!", data:{} } }
 
             // TOKEN: payload

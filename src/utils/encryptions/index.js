@@ -7,9 +7,9 @@ const bcrypt = require('bcrypt-nodejs')
  * @param {*} salt 
  * @returns hash
  */
-const hashEncrypt = (passwd, salt=10) =>{
-    const SALT = bcrypt.genSaltSync(salt)
-    return bcrypt.hashSync(passwd, SALT)
+const hashEncryption = (text, salt=10) =>{
+    const SALT =  bcrypt.genSaltSync(salt)
+    return bcrypt.hashSync(text, SALT)
 }
 
 /**
@@ -18,15 +18,13 @@ const hashEncrypt = (passwd, salt=10) =>{
  * @param {*} encryted hash 
  * @returns bool
  */
-const compareSync = (data, encryted)=>{
+const hashCompareSync = (data, encryted)=>{
     return bcrypt.compareSync(data, encryted)
 }
 
 
 
 module.exports = {
-
-    hashEncrypt,
-    compareSync,
-
+    hashCompareSync,
+    hashEncryption
 }

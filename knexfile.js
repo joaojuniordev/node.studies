@@ -33,6 +33,10 @@ module.exports = {
     migrations: {
         tableName: KNEX.TABLENAME || 'knex_migrations',
         directory: KNEX.DIRECTORY || './src/database/migrations'
+    },
+    seeds: {
+        // tableName: KNEX.TABLENAME || 'knex_migrations',
+        directory: KNEX.DIRECTORY || './src/database/seeds'
     }
 
 }

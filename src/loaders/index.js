@@ -1,8 +1,8 @@
 const { mkDirIfNoExist } = require('../utils/operations/dir.opr')
-const queries     = require('../constants/queries')
+const encryptions = require('../utils/encryptions')
 const validations = require('../utils/validations')
+const queries     = require('../constants/queries')
 const token       = require('../utils/operations/token.opr')
-const encrypt     = require('../utils/operations/encrypt.opr')
 
 
 module.exports = (app)=>{
@@ -18,10 +18,10 @@ module.exports = (app)=>{
     app.db = (app.db) ? app.db : {}
 
     // SET VARS AND METHODS TO THE APP:
-    app.db.queries  = queries
+    app.encryptions = encryptions
     app.validations = validations
+    app.db.queries  = queries
     app.token       = token
-    app.encrypt     = encrypt
 
     return true
 }
